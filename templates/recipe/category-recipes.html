@@ -1,0 +1,186 @@
+{%extends 'website/base.html'%}
+{%load static%}
+
+{%block content%}
+<!--banner-->
+<div class="banner banner-blog">
+    <div class="container ">
+        <div class="main-heading">
+            <h1>{{category}} Recipes</h1>
+        </div>
+
+    </div>
+</div>
+<div class="advance-search">
+    <!--advance search form-->
+
+    <div class="container">
+        <div class="wrapper-search">
+            <div class="container-tags">
+           
+
+            </div>
+     
+        </div>
+    </div>
+
+    <!--advance search form ends-->
+</div>
+
+<!--banner ends-->
+<div class="recipes-home-body inner-page">
+<div class="container">
+<div class="row">
+<div class="col-md-8 col-lg-9">
+<div class="recipe-set">
+<div class="listing-buttons">
+    <span class="grid "><i class="fa fa-th-large"></i></span>
+    <span class="list current"><i class="fa fa-bars"></i></span>
+</div>
+<h2> Recipes</h2>
+
+<div class="recipe-listing listing-list">
+{%if recipes%}
+{%for recipe in recipes%}
+<div class="listing">
+    <div class="image">
+        <a href="#">
+            <img src="{%static 'images/temp-images/listing-1.jpg'%}" alt="image"/>
+        </a>
+    </div>
+    <div class="detail">
+        <h4><a href="{%url 'recipe:recipe-details' recipe.title%}">{{recipe.title}}</a></h4>
+        <p>
+           {{recipe.description | truncatewords:12 }}
+        </p>
+        <div class="meta-listing">
+            <ul class="post-meta">
+                <li class="">Status - {{recipe.status}}</li>
+                <li class="calendar">{{recipe.created | date}}</li>
+            </ul>
+            <div class="rating-box">
+                {{recipe.category}}
+            </div>            </div>
+    </div>
+</div>
+{%endfor%}
+
+<!-- <div class="banner-header text-center">
+    <a href="#">
+        <img src="{%static 'images/temp-images/header-banner.jpg'%}" alt="banner">
+    </a>
+</div> -->
+
+{%include 'pagination.html' with page=recipes%}
+{%else%}
+<p>No {{category | lower}} recipes at the moment</p>
+{%endif%}
+
+<!-- <ul class="page-nav">
+    <li class="current"><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+</ul> -->
+</div>
+</div>
+</div>
+<div class="col-md-4 col-lg-3">
+<aside>
+<div class="side-bar">
+<!--recipes search widget-->
+
+<!--recipes search widget ends-->
+
+<!--popular recipes widget-->
+<div class="widget latest-news-widget">
+    <h2>popular recipes</h2>
+    <ul>
+        <li>
+            <div class="thumb">
+                <a href="#">
+                    <img src="images/temp-images/widget-thumbnail.jpg" alt="thumbnail"/>
+                </a>
+            </div>
+            <div class="detail">
+                <a href="#">Pimento Cheese Potato Skins</a>
+                <span class="post-date">March 21,2015</span>
+            </div>
+        </li>
+
+        <li>
+            <div class="thumb">
+                <a href="#">
+                    <img src="images/temp-images/widget-thumbnail.jpg" alt="thumbnail"/>
+                </a>
+            </div>
+            <div class="detail">
+                <a href="#">Pimento Cheese Potato Skins</a>
+                <span class="post-date">March 21,2015</span>
+            </div>
+        </li>
+
+        <li>
+            <div class="thumb">
+                <a href="#">
+                    <img src="images/temp-images/widget-thumbnail.jpg" alt="thumbnail"/>
+                </a>
+            </div>
+            <div class="detail">
+                <a href="#">Pimento Cheese Potato Skins</a>
+                <span class="post-date">March 21,2015</span>
+            </div>
+        </li>
+
+        <li>
+            <div class="thumb">
+                <a href="#">
+                    <img src="images/temp-images/widget-thumbnail.jpg" alt="thumbnail"/>
+                </a>
+            </div>
+            <div class="detail">
+                <a href="#">Pimento Cheese Potato Skins</a>
+                <span class="post-date">March 21,2015</span>
+            </div>
+        </li>
+
+    </ul>
+</div>
+<!--popular recipes widget ends-->
+
+<!--get social-->
+<div class="widget widget-get-social">
+    <h2>get social</h2>
+    <ul>
+        <li class="facebook">
+            <a href="#">
+                <i class="fa fa-facebook"></i>
+                <span class="count">23.5K</span>
+                <span class="count-type">Likes</span>
+            </a>
+        </li>
+        <li class="twitter">
+            <a href="#">
+                <i class="fa fa-twitter"></i>
+                <span class="count">23.5K</span>
+                <span class="count-type">Likes</span>
+            </a>
+        </li>
+        <li class="google-plus">
+            <a href="#">
+                <i class="fa fa-google-plus"></i>
+                <span class="count">23.5K</span>
+                <span class="count-type">Likes</span>
+            </a>
+        </li>
+
+    </ul>
+</div>
+<!--get social ends-->
+</div>
+</aside>
+</div>
+</div>
+
+</div>
+</div>
+{%endblock%}

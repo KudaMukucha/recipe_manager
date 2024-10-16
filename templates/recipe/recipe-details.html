@@ -1,0 +1,558 @@
+{%extends 'website/base.html'%}
+{%load static%}
+{%load humanize%}
+{%load widget_tweaks%}
+
+{%block content%}
+<!--banner-->
+<div class="banner banner-blog">
+    <div class="container ">
+        <div class="main-heading">
+            <h1>Recipe details </h1>
+        </div>
+
+    </div>
+</div>
+<div class="advance-search">
+    <!--advance search form-->
+
+    <div class="container">
+        <div class="wrapper-search">
+           
+      
+        </div>
+    </div>
+
+    <!--advance search form ends-->
+</div>
+
+<!--banner ends-->
+<div class="recipes-home-body inner-page">
+<div class="container">
+<div class="row">
+<div class="col-md-8 col-lg-9">
+<div class="recipe-set ">
+<div class="wrapper-detail-contents detail-2">
+<div class="single-recipe-detail">
+    <div class="wrapper-recipe-heading">
+        <div class="heading">
+            <h2>{{recipe.title}}</h2>
+
+        </div>
+        {%if request.user.is_chef%}
+        <div class="recipe-media">
+            <a class="print-butto" href="{%url 'recipe:update-recipe' recipe.pk%}"><i class="fa fa-pencil"></i> Update Recipe</a>
+        </div>
+        {%endif%}
+        <div class="recipe-media">
+            <a class="print-button" href="#"><i class="fa fa-print"></i> Print Recipe</a>
+        </div>
+    </div>
+
+    <div class="slider-recipe-detail2">
+        <div class="wrapper-slider-detail">
+            <div class="recipe-slider">
+                <div class="slider-detail2">
+                    <div>
+                        <a href="{%static 'images/temp-images/slide-recipe2-detail.jpg'%}" class="swipebox" rel="recipe-gallery"><img src="{%static 'images/temp-images/slide-recipe2-detail.jpg'%}" alt="slide"/></a>
+                    </div>
+                    <div>
+                        <a href="{%static 'images/temp-images/slide-recipe2-detail.jpg'%}" class="swipebox" rel="recipe-gallery"><img src="{%static 'images/temp-images/slide-recipe2-detail.jpg'%}" alt="slide"/></a>
+                    </div>
+                    <div>
+                        <a href="{%static 'images/temp-images/slide-recipe2-detail.jpg'%}" class="swipebox" rel="recipe-gallery"><img src="{%static 'images/temp-images/slide-recipe2-detail.jpg'%}" alt="slide"/></a>
+                    </div>
+                    <div>
+                        <a href="{%static 'images/temp-images/slide-recipe2-detail.jpg'%}" class="swipebox" rel="recipe-gallery"><img src="{%static 'images/temp-images/slide-recipe2-detail.jpg'%}" alt="slide"/></a>
+                    </div>
+                    <div>
+                        <a href="{%static 'images/temp-images/slide-recipe2-detail.jpg'%}" class="swipebox" rel="recipe-gallery"><img src="{%static 'images/temp-images/slide-recipe2-detail.jpg'%}" alt="slide"/></a>
+                    </div>
+                </div>
+                <span class="custom-arrows wider">
+                    <span class="left-arrow slick-arrow" data-direction="prev" style="display: table-cell;"><i class="fa fa-arrow-left"></i></span>
+                    <span class="right-arrow slick-arrow" data-direction="next" style="display: table-cell;"><i class="fa fa-arrow-right"></i></span>
+                </span>
+            </div>
+
+            <ul class="recipe-specs-2">
+                <li><span>Yield : </span>{{recipe.recipe_yield}} Grills</li>
+                <li><span>Servings : </span>{{recipe.servings}}</li>
+                <li><span>Prep Time : </span>{{recipe.prep_time}}m</li>
+                <li><span>Cook Time : </span>{{recipe.cook_time}}m</li>
+                <li><span>Ready In : </span>{{recipe.ready_in}}m</li>
+            </ul>
+        </div>
+        <a href="{{recipe.video_link}}" target="_blank"  class="swipebox slider-video-button">Watch Video</a>
+    </div>
+</div>
+
+
+<div class="recipe-detail-body">
+<div class="rating-box">
+    <span class="rating-icons"><svg class="icon-container" width="25" height="19" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 19">
+
+        <g>
+            <title>background</title>
+            <rect fill="none"  height="21" width="27" y="-1" x="-1"/>
+        </g>
+        <g>
+            <title>Layer 1</title>
+            <path class="icon-svg"  d="m24.671816,17.625433c0,0.438 -0.286999,0.801001 -0.681,0.935001c-0.095001,0.036999 -0.198002,0.064999 -0.318001,0.064999l-16.000998,0c-0.553,0 -1,-0.448 -1,-1c0,-0.553999 0.447,-1 1,-1l14.950999,0c-0.500999,-5.053999 -4.764997,-9 -9.950999,-9c-5.523,0 -10,4.477001 -10,10c0,0 0.063,1 -1,1c-1.062,0 -1,-1 -1,-1c0,-5.769999 4.071,-10.581999 9.495001,-11.734999c-0.306002,-0.52 -0.495001,-1.117001 -0.495001,-1.765001c0,-1.933999 1.566999,-3.499999 3.5,-3.499999c1.931999,0 3.499,1.567 3.499,3.499999c0,0.739 -0.232998,1.423 -0.624998,1.989c4.984999,1.459 8.625998,6.056 8.625998,11.511l0,0zm-11.499,-15c-0.828999,0 -1.500999,0.670001 -1.500999,1.499001c0,0.827999 0.672001,1.5 1.500999,1.5c0.828001,0 1.499001,-0.672001 1.499001,-1.5c0,-0.829 -0.671,-1.499001 -1.499001,-1.499001l0,0z" clip-rule="evenodd" fill-rule="evenodd"/>
+        </g>
+    </svg></span>
+    <span class="rating-icons"><svg class="icon-container" width="25" height="19" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 19">
+
+        <g>
+            <title>background</title>
+            <rect fill="none"  height="21" width="27" y="-1" x="-1"/>
+        </g>
+        <g>
+            <title>Layer 1</title>
+            <path class="icon-svg"  d="m24.671816,17.625433c0,0.438 -0.286999,0.801001 -0.681,0.935001c-0.095001,0.036999 -0.198002,0.064999 -0.318001,0.064999l-16.000998,0c-0.553,0 -1,-0.448 -1,-1c0,-0.553999 0.447,-1 1,-1l14.950999,0c-0.500999,-5.053999 -4.764997,-9 -9.950999,-9c-5.523,0 -10,4.477001 -10,10c0,0 0.063,1 -1,1c-1.062,0 -1,-1 -1,-1c0,-5.769999 4.071,-10.581999 9.495001,-11.734999c-0.306002,-0.52 -0.495001,-1.117001 -0.495001,-1.765001c0,-1.933999 1.566999,-3.499999 3.5,-3.499999c1.931999,0 3.499,1.567 3.499,3.499999c0,0.739 -0.232998,1.423 -0.624998,1.989c4.984999,1.459 8.625998,6.056 8.625998,11.511l0,0zm-11.499,-15c-0.828999,0 -1.500999,0.670001 -1.500999,1.499001c0,0.827999 0.672001,1.5 1.500999,1.5c0.828001,0 1.499001,-0.672001 1.499001,-1.5c0,-0.829 -0.671,-1.499001 -1.499001,-1.499001l0,0z" clip-rule="evenodd" fill-rule="evenodd"/>
+        </g>
+    </svg></span>
+    <span class="rating-icons"><svg class="icon-container" width="25" height="19" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 19">
+
+        <g>
+            <title>background</title>
+            <rect fill="none"  height="21" width="27" y="-1" x="-1"/>
+        </g>
+        <g>
+            <title>Layer 1</title>
+            <path class="icon-svg"  d="m24.671816,17.625433c0,0.438 -0.286999,0.801001 -0.681,0.935001c-0.095001,0.036999 -0.198002,0.064999 -0.318001,0.064999l-16.000998,0c-0.553,0 -1,-0.448 -1,-1c0,-0.553999 0.447,-1 1,-1l14.950999,0c-0.500999,-5.053999 -4.764997,-9 -9.950999,-9c-5.523,0 -10,4.477001 -10,10c0,0 0.063,1 -1,1c-1.062,0 -1,-1 -1,-1c0,-5.769999 4.071,-10.581999 9.495001,-11.734999c-0.306002,-0.52 -0.495001,-1.117001 -0.495001,-1.765001c0,-1.933999 1.566999,-3.499999 3.5,-3.499999c1.931999,0 3.499,1.567 3.499,3.499999c0,0.739 -0.232998,1.423 -0.624998,1.989c4.984999,1.459 8.625998,6.056 8.625998,11.511l0,0zm-11.499,-15c-0.828999,0 -1.500999,0.670001 -1.500999,1.499001c0,0.827999 0.672001,1.5 1.500999,1.5c0.828001,0 1.499001,-0.672001 1.499001,-1.5c0,-0.829 -0.671,-1.499001 -1.499001,-1.499001l0,0z" clip-rule="evenodd" fill-rule="evenodd"/>
+        </g>
+    </svg></span>
+    <span class="rating-icons"><svg class="icon-container" width="25" height="19" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 19">
+
+        <g>
+            <title>background</title>
+            <rect fill="none"  height="21" width="27" y="-1" x="-1"/>
+        </g>
+        <g>
+            <title>Layer 1</title>
+            <path class="icon-svg"  d="m24.671816,17.625433c0,0.438 -0.286999,0.801001 -0.681,0.935001c-0.095001,0.036999 -0.198002,0.064999 -0.318001,0.064999l-16.000998,0c-0.553,0 -1,-0.448 -1,-1c0,-0.553999 0.447,-1 1,-1l14.950999,0c-0.500999,-5.053999 -4.764997,-9 -9.950999,-9c-5.523,0 -10,4.477001 -10,10c0,0 0.063,1 -1,1c-1.062,0 -1,-1 -1,-1c0,-5.769999 4.071,-10.581999 9.495001,-11.734999c-0.306002,-0.52 -0.495001,-1.117001 -0.495001,-1.765001c0,-1.933999 1.566999,-3.499999 3.5,-3.499999c1.931999,0 3.499,1.567 3.499,3.499999c0,0.739 -0.232998,1.423 -0.624998,1.989c4.984999,1.459 8.625998,6.056 8.625998,11.511l0,0zm-11.499,-15c-0.828999,0 -1.500999,0.670001 -1.500999,1.499001c0,0.827999 0.672001,1.5 1.500999,1.5c0.828001,0 1.499001,-0.672001 1.499001,-1.5c0,-0.829 -0.671,-1.499001 -1.499001,-1.499001l0,0z" clip-rule="evenodd" fill-rule="evenodd"/>
+        </g>
+    </svg></span>
+    <span class="rating-icons"><svg class="icon-container" width="25" height="19" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 19">
+
+        <g>
+            <title>background</title>
+            <rect fill="none"  height="21" width="27" y="-1" x="-1"/>
+        </g>
+        <g>
+            <title>Layer 1</title>
+            <path class="icon-svg"  d="m24.671816,17.625433c0,0.438 -0.286999,0.801001 -0.681,0.935001c-0.095001,0.036999 -0.198002,0.064999 -0.318001,0.064999l-16.000998,0c-0.553,0 -1,-0.448 -1,-1c0,-0.553999 0.447,-1 1,-1l14.950999,0c-0.500999,-5.053999 -4.764997,-9 -9.950999,-9c-5.523,0 -10,4.477001 -10,10c0,0 0.063,1 -1,1c-1.062,0 -1,-1 -1,-1c0,-5.769999 4.071,-10.581999 9.495001,-11.734999c-0.306002,-0.52 -0.495001,-1.117001 -0.495001,-1.765001c0,-1.933999 1.566999,-3.499999 3.5,-3.499999c1.931999,0 3.499,1.567 3.499,3.499999c0,0.739 -0.232998,1.423 -0.624998,1.989c4.984999,1.459 8.625998,6.056 8.625998,11.511l0,0zm-11.499,-15c-0.828999,0 -1.500999,0.670001 -1.500999,1.499001c0,0.827999 0.672001,1.5 1.500999,1.5c0.828001,0 1.499001,-0.672001 1.499001,-1.5c0,-0.829 -0.671,-1.499001 -1.499001,-1.499001l0,0z" clip-rule="evenodd" fill-rule="evenodd"/>
+        </g>
+    </svg></span>
+    <span class="rating-figure">(4.1 / 5)</span>
+</div>
+<ul class="pre-tags">
+    <li><span>Cuisine : </span>{{recipe.cuisine}}</li>
+    <li><span>Course : </span>{{recipe.course}}</li>
+    <li><span>Skill Level : </span>{{recipe.skill_level}}</li>
+</ul>
+<div class="separator-post"></div>
+<p>
+{{recipe.description}}
+</p>
+<br/>
+<div class="ingredients-checkbox">
+    <div class="ingredients">
+        <h3>Ingredients</h3>
+        <ul>
+            {%for ingredient in ingredients%}
+            <li>
+                <label>
+                    <input type="checkbox"/>
+                   {{ingredient}}
+                </label>
+            </li>
+          {%endfor%}
+           
+
+        </ul>
+    </div>
+    <div class="nutritional">
+        <h3>Nutritional Info</h3>
+        <div class="nutrition-detail">
+            <div class="left-box">
+                Protein
+                <br/>
+                <span>{{recipe.protein}}</span>
+            </div>
+            <div class="right-box">
+                Fat Total
+                <br/>
+                <span>{{recipe.fat}}</span>
+            </div>
+        </div>
+        <div class="separator-post"></div>
+        <div class="nutrition-detail">
+            <div class="left-box">
+                Deitary Fiber
+                <br/>
+                <span>{{recipe.dietary_fiber}}</span>
+            </div>
+            <div class="right-box">
+                Cholesterol
+                <br/>
+                <span>{{recipe.cholestrol}}</span>
+            </div>
+        </div>
+        <div class="separator-post"></div>
+        <div class="nutrition-detail">
+            <div class="left-box">
+                Calories
+                <br/>
+                <span>{{recipe.calories}}</span>
+            </div>
+            <div class="right-box">
+                Carbohydrates
+                <br/>
+                <span>{{recipe.carbohydrates}}</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="recipe-steps">
+    <h3 class="lined">Step by Step method</h3>
+
+    <p>
+        {{recipe.steps | linebreaks}}
+    </p>
+
+</div>
+
+{%if request.user.is_chef%}
+{%if recipe.admin_reply%}
+<div class="tips-variations">
+    <h3>Admin Comment</h3>
+    <p>
+        {{recipe.admin_reply}}
+    </p>
+</div>
+{%else%}
+<div class="tips-variations">
+    <h3>Admin Comment</h3>
+    <p>No comment from the admin yet.</p>
+</div>
+{%endif%}
+{%elif request.user.is_admin%}
+<div class="tips-variations">
+    <h3>Admin Comment</h3>
+    <form method="post" action="{%url 'recipe:resolve-recipe' recipe.pk%}">
+        {%csrf_token%}
+        <textarea name="reply" required id="" cols="97" rows="10"></textarea>
+       
+        <button class="default-btn small-button theme-color" name="action" value="approve" type="submit">Approve</button>
+        <button class="default-btn small-button theme-tag-color" name="action" value="decline" type="submit">Reject</button>
+
+    </form>
+</div>
+{%endif%}
+<div class="separator-post"></div>
+<div class="tags-icons">
+    <div class="row">
+        <div class="col-sm-7">
+       
+        </div>
+        <div class="col-sm-5">
+            <div class="details-social-icons">
+                <ul>
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                    <li><a href="#"><i class="fa fa-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="about-chef">
+    <h3 class="lined">About Chef</h3>
+    <div class="listing">
+        <div class="image">
+            <div class="image-inner">
+                <a href="#"><img src="{%static 'images/temp-images/chef.png'%}" alt="chef"/></a>
+            </div>
+        </div>
+        <div class="detail">
+            <div class="row">
+                <div class="col-sm-8">
+                    <h4>{{recipe.chef.username}}</h4>
+
+                </div>
+                <!-- <div class="col-sm-4">
+                    <ul class="chef-social-links">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    </ul>
+                </div> -->
+            </div>
+           {%if recipe.chef.short_bio%}
+           <p>
+            {{recipe.chef.short_bio}}
+        </p>
+        {%else%}
+        <p>
+           {{recipe.chef.username}} has no bio at the moment.
+        </p>
+           {%endif%}
+           
+        </div>
+    </div>
+</div>
+
+{%if related_recipes%}
+<div class="related-recipes">
+<h3 class="lined">Related Recipes</h3>
+<div class="boxed-recipes text-center">
+<!--single recipe-->
+{%for recipe in related_recipes%}
+<div class="recipe-single">
+    <div class="recipe-image">
+        <a href="#"><img src="{%static 'images/temp-images/main-recipe1.jpg'%}" alt="image"></a>
+    </div>
+    <div class="outer-detail">
+        <div class="detail">
+            <h3><a href="{%url 'recipe:recipe-details' recipe.title|lower%}">{{recipe.title}}</a></h3>
+            <div class="short-separator"></div>
+            <!-- <div class="rating-box">
+    <span class="rating-icons"><svg class="icon-container" width="25" height="19" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 19">
+
+        <g>
+            <title>background</title>
+            <rect fill="none"  height="21" width="27" y="-1" x="-1"/>
+        </g>
+        <g>
+            <title>Layer 1</title>
+            <path class="icon-svg"  d="m24.671816,17.625433c0,0.438 -0.286999,0.801001 -0.681,0.935001c-0.095001,0.036999 -0.198002,0.064999 -0.318001,0.064999l-16.000998,0c-0.553,0 -1,-0.448 -1,-1c0,-0.553999 0.447,-1 1,-1l14.950999,0c-0.500999,-5.053999 -4.764997,-9 -9.950999,-9c-5.523,0 -10,4.477001 -10,10c0,0 0.063,1 -1,1c-1.062,0 -1,-1 -1,-1c0,-5.769999 4.071,-10.581999 9.495001,-11.734999c-0.306002,-0.52 -0.495001,-1.117001 -0.495001,-1.765001c0,-1.933999 1.566999,-3.499999 3.5,-3.499999c1.931999,0 3.499,1.567 3.499,3.499999c0,0.739 -0.232998,1.423 -0.624998,1.989c4.984999,1.459 8.625998,6.056 8.625998,11.511l0,0zm-11.499,-15c-0.828999,0 -1.500999,0.670001 -1.500999,1.499001c0,0.827999 0.672001,1.5 1.500999,1.5c0.828001,0 1.499001,-0.672001 1.499001,-1.5c0,-0.829 -0.671,-1.499001 -1.499001,-1.499001l0,0z" clip-rule="evenodd" fill-rule="evenodd"/>
+        </g>
+    </svg></span>
+    <span class="rating-icons"><svg class="icon-container" width="25" height="19" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 19">
+
+        <g>
+            <title>background</title>
+            <rect fill="none"  height="21" width="27" y="-1" x="-1"/>
+        </g>
+        <g>
+            <title>Layer 1</title>
+            <path class="icon-svg"  d="m24.671816,17.625433c0,0.438 -0.286999,0.801001 -0.681,0.935001c-0.095001,0.036999 -0.198002,0.064999 -0.318001,0.064999l-16.000998,0c-0.553,0 -1,-0.448 -1,-1c0,-0.553999 0.447,-1 1,-1l14.950999,0c-0.500999,-5.053999 -4.764997,-9 -9.950999,-9c-5.523,0 -10,4.477001 -10,10c0,0 0.063,1 -1,1c-1.062,0 -1,-1 -1,-1c0,-5.769999 4.071,-10.581999 9.495001,-11.734999c-0.306002,-0.52 -0.495001,-1.117001 -0.495001,-1.765001c0,-1.933999 1.566999,-3.499999 3.5,-3.499999c1.931999,0 3.499,1.567 3.499,3.499999c0,0.739 -0.232998,1.423 -0.624998,1.989c4.984999,1.459 8.625998,6.056 8.625998,11.511l0,0zm-11.499,-15c-0.828999,0 -1.500999,0.670001 -1.500999,1.499001c0,0.827999 0.672001,1.5 1.500999,1.5c0.828001,0 1.499001,-0.672001 1.499001,-1.5c0,-0.829 -0.671,-1.499001 -1.499001,-1.499001l0,0z" clip-rule="evenodd" fill-rule="evenodd"/>
+        </g>
+    </svg></span>
+    <span class="rating-icons"><svg class="icon-container" width="25" height="19" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 19">
+
+        <g>
+            <title>background</title>
+            <rect fill="none"  height="21" width="27" y="-1" x="-1"/>
+        </g>
+        <g>
+            <title>Layer 1</title>
+            <path class="icon-svg"  d="m24.671816,17.625433c0,0.438 -0.286999,0.801001 -0.681,0.935001c-0.095001,0.036999 -0.198002,0.064999 -0.318001,0.064999l-16.000998,0c-0.553,0 -1,-0.448 -1,-1c0,-0.553999 0.447,-1 1,-1l14.950999,0c-0.500999,-5.053999 -4.764997,-9 -9.950999,-9c-5.523,0 -10,4.477001 -10,10c0,0 0.063,1 -1,1c-1.062,0 -1,-1 -1,-1c0,-5.769999 4.071,-10.581999 9.495001,-11.734999c-0.306002,-0.52 -0.495001,-1.117001 -0.495001,-1.765001c0,-1.933999 1.566999,-3.499999 3.5,-3.499999c1.931999,0 3.499,1.567 3.499,3.499999c0,0.739 -0.232998,1.423 -0.624998,1.989c4.984999,1.459 8.625998,6.056 8.625998,11.511l0,0zm-11.499,-15c-0.828999,0 -1.500999,0.670001 -1.500999,1.499001c0,0.827999 0.672001,1.5 1.500999,1.5c0.828001,0 1.499001,-0.672001 1.499001,-1.5c0,-0.829 -0.671,-1.499001 -1.499001,-1.499001l0,0z" clip-rule="evenodd" fill-rule="evenodd"/>
+        </g>
+    </svg></span>
+    <span class="rating-icons"><svg class="icon-container" width="25" height="19" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 19">
+
+        <g>
+            <title>background</title>
+            <rect fill="none"  height="21" width="27" y="-1" x="-1"/>
+        </g>
+        <g>
+            <title>Layer 1</title>
+            <path class="icon-svg"  d="m24.671816,17.625433c0,0.438 -0.286999,0.801001 -0.681,0.935001c-0.095001,0.036999 -0.198002,0.064999 -0.318001,0.064999l-16.000998,0c-0.553,0 -1,-0.448 -1,-1c0,-0.553999 0.447,-1 1,-1l14.950999,0c-0.500999,-5.053999 -4.764997,-9 -9.950999,-9c-5.523,0 -10,4.477001 -10,10c0,0 0.063,1 -1,1c-1.062,0 -1,-1 -1,-1c0,-5.769999 4.071,-10.581999 9.495001,-11.734999c-0.306002,-0.52 -0.495001,-1.117001 -0.495001,-1.765001c0,-1.933999 1.566999,-3.499999 3.5,-3.499999c1.931999,0 3.499,1.567 3.499,3.499999c0,0.739 -0.232998,1.423 -0.624998,1.989c4.984999,1.459 8.625998,6.056 8.625998,11.511l0,0zm-11.499,-15c-0.828999,0 -1.500999,0.670001 -1.500999,1.499001c0,0.827999 0.672001,1.5 1.500999,1.5c0.828001,0 1.499001,-0.672001 1.499001,-1.5c0,-0.829 -0.671,-1.499001 -1.499001,-1.499001l0,0z" clip-rule="evenodd" fill-rule="evenodd"/>
+        </g>
+    </svg></span>
+    <span class="rating-icons"><svg class="icon-container" width="25" height="19" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 19">
+
+        <g>
+            <title>background</title>
+            <rect fill="none"  height="21" width="27" y="-1" x="-1"/>
+        </g>
+        <g>
+            <title>Layer 1</title>
+            <path class="icon-svg"  d="m24.671816,17.625433c0,0.438 -0.286999,0.801001 -0.681,0.935001c-0.095001,0.036999 -0.198002,0.064999 -0.318001,0.064999l-16.000998,0c-0.553,0 -1,-0.448 -1,-1c0,-0.553999 0.447,-1 1,-1l14.950999,0c-0.500999,-5.053999 -4.764997,-9 -9.950999,-9c-5.523,0 -10,4.477001 -10,10c0,0 0.063,1 -1,1c-1.062,0 -1,-1 -1,-1c0,-5.769999 4.071,-10.581999 9.495001,-11.734999c-0.306002,-0.52 -0.495001,-1.117001 -0.495001,-1.765001c0,-1.933999 1.566999,-3.499999 3.5,-3.499999c1.931999,0 3.499,1.567 3.499,3.499999c0,0.739 -0.232998,1.423 -0.624998,1.989c4.984999,1.459 8.625998,6.056 8.625998,11.511l0,0zm-11.499,-15c-0.828999,0 -1.500999,0.670001 -1.500999,1.499001c0,0.827999 0.672001,1.5 1.500999,1.5c0.828001,0 1.499001,-0.672001 1.499001,-1.5c0,-0.829 -0.671,-1.499001 -1.499001,-1.499001l0,0z" clip-rule="evenodd" fill-rule="evenodd"/>
+        </g>
+    </svg></span>
+                <span class="rating-figure">(4.1 / 5)</span>
+            </div> -->
+        </div>
+    </div>
+</div>
+{%endfor%}
+
+</div>
+</div>
+{%endif%}
+<div class="recipe-comments">
+    {%with comments.count as total_comments%}
+    <h3 class="lined">
+       {{total_comments}} comment{{total_comments|pluralize}}
+    </h3>
+    {%endwith%}
+    {%if comments%}
+    <ul>
+        {%for comment in comments%}
+        <li>
+            <div class="avatar">
+                <a href="#"><img src="{%static 'images/temp-images/recipe-comment1.jpg'%}" alt="avatar"/></a>
+            </div>
+            <div class="comment">
+                <h5><a href="#">{{comment.name}}</a></h5>
+                <span class="time">({{comment.created | naturaltime}})</span>
+                <p>
+                   {{comment.body | linebreaks}}
+                </p>
+                <a href="#" class="reply-button">Reply</a>
+            </div>
+
+            <!-- <ul>
+                <li>
+                    <div class="avatar">
+                        <a href="#"><img src="images/temp-images/recipe-comment2.jpg" alt="avatar"/></a>
+                    </div>
+                    <div class="comment">
+                        <h5><a href="#">John Doe</a></h5>
+                        <span class="time">(2hours ago)</span>
+                        <p>
+                            Rinse the chicken pieces in cold water and pat dry. Place the chicken
+                        </p>
+                        <a href="#" class="reply-button">Reply</a>
+                    </div>
+                </li>
+            </ul> -->
+        </li>
+        {%endfor%}
+     
+    </ul>
+    {%endif%}
+</div>
+
+<div class="comment-form">
+    <h3 class="lined">Leave Comment</h3>
+
+    <form action="{%url 'recipe:post-comment' recipe.pk%}" method="post">
+        {%csrf_token%}
+        <div class="row">
+            <div class="col-md-6">
+              {%render_field form.name placeholder='Name'%}
+            </div>
+            <div class="col-md-6">
+                {%render_field form.email placeholder='Email'%}
+            </div>
+        </div>
+        {%render_field form.body placeholder='Write your comment...'%}
+        <button class="submit-comment" type="submit">Submit</button>
+    </form>
+</div>
+
+
+</div>
+</div>
+</div>
+<div class="col-md-4 col-lg-3">
+<aside>
+<div class="side-bar">
+<!--recipes search widget-->
+
+<!---recipes search widget ends-->
+
+<!--popular recipes widget-->
+<!-- <div class="widget latest-news-widget">
+    <h2>popular recipes</h2>
+    <ul>
+        <li>
+            <div class="thumb">
+                <a href="#">
+                    <img src="images/temp-images/widget-thumbnail.jpg" alt="thumbnail"/>
+                </a>
+            </div>
+            <div class="detail">
+                <a href="#">Pimento Cheese Potato Skins</a>
+                <span class="post-date">March 21,2015</span>
+            </div>
+        </li>
+
+        <li>
+            <div class="thumb">
+                <a href="#">
+                    <img src="images/temp-images/widget-thumbnail.jpg" alt="thumbnail"/>
+                </a>
+            </div>
+            <div class="detail">
+                <a href="#">Pimento Cheese Potato Skins</a>
+                <span class="post-date">March 21,2015</span>
+            </div>
+        </li>
+
+        <li>
+            <div class="thumb">
+                <a href="#">
+                    <img src="images/temp-images/widget-thumbnail.jpg" alt="thumbnail"/>
+                </a>
+            </div>
+            <div class="detail">
+                <a href="#">Pimento Cheese Potato Skins</a>
+                <span class="post-date">March 21,2015</span>
+            </div>
+        </li>
+
+        <li>
+            <div class="thumb">
+                <a href="#">
+                    <img src="images/temp-images/widget-thumbnail.jpg" alt="thumbnail"/>
+                </a>
+            </div>
+            <div class="detail">
+                <a href="#">Pimento Cheese Potato Skins</a>
+                <span class="post-date">March 21,2015</span>
+            </div>
+        </li>
+
+    </ul>
+</div> -->
+<!--popular recipes widget ends-->
+
+<!--get social-->
+<div class="widget widget-get-social">
+    <h2>get social</h2>
+    <ul>
+        <li class="facebook">
+            <a href="#">
+                <i class="fa fa-facebook"></i>
+                <span class="count">23.5K</span>
+                <span class="count-type">Likes</span>
+            </a>
+        </li>
+        <li class="twitter">
+            <a href="#">
+                <i class="fa fa-twitter"></i>
+                <span class="count">23.5K</span>
+                <span class="count-type">Likes</span>
+            </a>
+        </li>
+        <li class="google-plus">
+            <a href="#">
+                <i class="fa fa-google-plus"></i>
+                <span class="count">23.5K</span>
+                <span class="count-type">Likes</span>
+            </a>
+        </li>
+
+    </ul>
+</div>
+<!--get social ends-->
+</div>
+</aside>
+</div>
+</div>
+
+</div>
+</div>
+{%endblock%}

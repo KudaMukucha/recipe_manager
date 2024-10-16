@@ -1,0 +1,29 @@
+{%extends 'accounts/base.html'%}
+{%load static%}
+{%load widget_tweaks%}
+{%block title%}Register - Food & Taste Recipes {%endblock%}
+
+
+<h4>{{h2}}</h4>
+{%block content%}
+<form method="post">
+    {%csrf_token%}
+    <div class="input-group mb-3">
+        {%render_field form.email class="form-control form-control-lg bg-light fs-6" placeholder="Email address"%}
+    </div>
+    <div class="input-group mb-3">
+        {%render_field form.password1 class="form-control form-control-lg bg-light fs-6" placeholder="Password"%}
+    </div>
+    <div class="input-group mb-3">
+        {%render_field form.password2 class="form-control form-control-lg bg-light fs-6" placeholder="Confirm Password"%}
+    </div>
+    <div class="input-group mb-3">
+        {%render_field form.short_bio|attr:"rows:3" class="form-control form-control-lg bg-light fs-6" placeholder="Tell us about yourself, just a little bit."%}
+    </div>
+
+    <div class="input-group mb-3">
+        <button class="btn btn-lg btn-primary w-100 fs-6" type="submit">Register</button>
+    </div>
+   
+</form>
+{%endblock%}
