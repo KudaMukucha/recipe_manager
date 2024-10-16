@@ -25,4 +25,6 @@ urlpatterns = [
     path('',include('website.urls')),
     path('recipes/',include('recipe.urls'))
 ]
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+if settings.OVERRIDE_DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
