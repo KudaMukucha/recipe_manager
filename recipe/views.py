@@ -105,8 +105,8 @@ def resolve_recipe(request,pk):
     recipe.save()
     return redirect('recipe:review-recipes')
 
-def update_recipe(request,pk):
-    recipe = Recipe.objects.get(pk=pk)
+def update_recipe(request,slug):
+    recipe = Recipe.objects.get(slug=slug)
     if request.method == 'POST':
         form = UpdateRecipeForm(request.POST,request.FILES,instance=recipe)
         if form.is_valid():

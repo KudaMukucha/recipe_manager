@@ -41,7 +41,7 @@
         </div>
         {%if request.user.is_chef%}
         <div class="recipe-media">
-            <a class="print-butto" href="{%url 'recipe:update-recipe' recipe.pk%}"><i class="fa fa-pencil"></i> Update Recipe</a>
+            <a class="print-butto" href="{%url 'recipe:update-recipe' recipe.slug%}"><i class="fa fa-pencil"></i> Update Recipe</a>
         </div>
         {%endif%}
         <div class="recipe-media">

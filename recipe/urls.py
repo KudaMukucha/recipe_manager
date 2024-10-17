@@ -10,7 +10,7 @@ urlpatterns =[
     path('recipe-details/<slug:slug>/',views.recipe_details,name='recipe-details'),
     path('comment/<int:pk>/',views.post_comment,name='post-comment'),
     path('resolve-recipe/<int:pk>/',views.resolve_recipe,name='resolve-recipe'),
-    path('update-recipe/<int:pk>/',views.update_recipe,name='update-recipe'),
+    path('update-recipe/<slug:slug>/',views.update_recipe,name='update-recipe'),
     path('category/<str:category_name>/',views.recipes_per_category,name='recipes-per-category'),
     path('search/',views.search_recipes,name='search-recipes')
 ]
