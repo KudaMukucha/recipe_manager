@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.utils.text import slugify
 
 User = get_user_model()
 class Category(models.Model):
@@ -37,6 +38,7 @@ class Recipe(models.Model):
     chef = models.ForeignKey(User,on_delete=models.DO_NOTHING,related_name='chef_recipes')
     approver = models.ForeignKey(User,on_delete=models.DO_NOTHING,related_name='approver_recipes',null=True,blank=True)
     title = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True,blank=True,null=True)
     description = models.TextField()
     status = models.CharField(max_length=20,choices=STATUS_CHOICES,default='Pending')
     created = models.DateTimeField(auto_now_add=True)
@@ -68,6 +70,10 @@ class Recipe(models.Model):
     def __str__(self):
         return self.title
     
+    def save(self,*args,**kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args,**kwargs)    
 
 class Comment(models.Model):
     recipe = models.ForeignKey(Recipe,on_delete=models.CASCADE,related_name='comments')

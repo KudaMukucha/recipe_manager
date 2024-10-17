@@ -68,8 +68,8 @@ def site_recipes(request):
         recipes = paginator.page(1)
     return render(request,'recipe/site-recipes.html',{'recipes':recipes})
 
-def recipe_details(request,title):
-    recipe = Recipe.objects.get(title=title)
+def recipe_details(request,slug):
+    recipe = Recipe.objects.get(slug=slug)
     ingredients = recipe.ingredients.split(',')
     comments = recipe.comments.filter(active=True)
     form = CreateCommentForm()

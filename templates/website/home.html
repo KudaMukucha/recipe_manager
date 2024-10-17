@@ -163,18 +163,18 @@
                        
                         <div class="image-first inner-split">
                             <div class="image common-split animated wow flipInY animation-delay100ms">
-                                <a href="{%url 'recipe:recipe-details' recipe.title%}">
+                                <a href="{%url 'recipe:recipe-details' recipe.slug%}">
                                   <img src="{%static 'images/temp-images/hot3-var1.jpg'%}"alt="image" />
                                 </a>
                             </div>
                             <div class="intro common-split animated wow flipInY animation-delay200ms">
                                 <div class="intro-inner ">
-                                    <h3><a href="{%url 'recipe:recipe-details' recipe.title%}">{{recipe.title}}</a></h3>
+                                    <h3><a href="{%url 'recipe:recipe-details' recipe.slug%}">{{recipe.title}}</a></h3>
                                     <div class="short-separator"></div>
                                     <p>
                                        {{recipe.description|truncatewords:9}}
                                     </p>
-                                    <a class="read-more" href="{%url 'recipe:recipe-details' recipe.title%}">read more</a>
+                                    <a class="read-more" href="{%url 'recipe:recipe-details' recipe.slug%}">read more</a>
                                 </div>
                             </div>
                         </div>
@@ -221,12 +221,12 @@
                     <div class="recipe-contents text-center">
                         <div class="recipe-content-inner">
                             <span class="tag">Recipe of the Day</span>
-                            <h2><a href="{%url 'recipe:recipe-details' recipe.title%}">{{recipe.title}}</a></h2>
+                            <h2><a href="{%url 'recipe:recipe-details' recipe.slug%}">{{recipe.title}}</a></h2>
                             <div class="short-separator"></div>
                             <p>
                                 {{recipe.description | truncatewords:9}}
                             </p>
-                            <a class="read-more" href="{%url 'recipe:recipe-details' recipe.title%}">read more</a>
+                            <a class="read-more" href="{%url 'recipe:recipe-details' recipe.slug%}">read more</a>
                         </div>
                     </div>
                 </div>
